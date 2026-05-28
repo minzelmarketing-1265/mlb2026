@@ -6,28 +6,28 @@
 <title>MLB Tonight</title>
 <style>
   :root {
-    --bg: #0b1220;
-    --panel: #131c2e;
-    --panel-2: #1a2540;
-    --panel-3: #20304f;
-    --border: #243150;
-    --border-2: #38507f;
-    --text: #e6ebf5;
-    --muted: #8a96b2;
-    --dim: #5c6781;
-    --accent: #ffd166;
-    --good: #4ade80;
-    --warn: #facc15;
-    --bad: #f87171;
-    --live: #ef4444;
-    --info: #60a5fa;
+    --bg: #ffffff;
+    --panel: #ffffff;
+    --panel-2: #f1f4f9;
+    --panel-3: #e6ecf4;
+    --border: #d6dde8;
+    --border-2: #aebccf;
+    --text: #18202e;
+    --muted: #586577;
+    --dim: #8b95a6;
+    --accent: #c2740a;
+    --good: #15803d;
+    --warn: #b45309;
+    --bad: #dc2626;
+    --live: #dc2626;
+    --info: #2563eb;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
     font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
   header {
     position: sticky; top: 0; z-index: 5;
-    background: linear-gradient(180deg, rgba(11,18,32,0.97), rgba(11,18,32,0.88));
+    background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(255,255,255,0.86));
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
     padding: 12px 20px;
@@ -39,10 +39,10 @@
   input[type=date], button, select {
     background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
     border-radius: 8px; padding: 6px 10px; font: inherit; cursor: pointer;
-    color-scheme: dark;
+    color-scheme: light;
   }
   button:hover, select:hover, input[type=date]:hover { border-color: var(--border-2); }
-  button.primary { background: #2a3f6e; border-color: #355188; }
+  button.primary { background: #2a3f6e; border-color: #355188; color: #fff; }
   button.primary:hover { background: #355188; }
   .meta { color: var(--muted); font-size: 12px; }
   main { padding: 16px 20px 60px; max-width: 1400px; margin: 0 auto; }
@@ -54,8 +54,10 @@
   }
   .card {
     background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
-    overflow: hidden; transition: border-color .15s;
+    overflow: hidden; transition: border-color .15s, box-shadow .15s;
+    box-shadow: 0 1px 3px rgba(20,30,50,0.06);
   }
+  .card:hover { box-shadow: 0 2px 8px rgba(20,30,50,0.10); }
   .card:hover { border-color: var(--border-2); }
   .card.soon { border-color: #4a6ca6; }
   .card.live { border-color: var(--live); box-shadow: 0 0 0 1px rgba(239,68,68,0.25); }
@@ -69,7 +71,7 @@
   .pill {
     font-size: 11px; letter-spacing: 0.3px;
     padding: 2px 8px; border-radius: 999px;
-    color: var(--muted); border: 1px solid var(--border); background: rgba(255,255,255,0.04);
+    color: var(--muted); border: 1px solid var(--border); background: rgba(20,30,50,0.03);
     white-space: nowrap;
   }
   .pill.live { color: #fff; background: var(--live); border-color: var(--live); text-transform: uppercase; }
@@ -85,6 +87,7 @@
   .team-row + .team-row { border-top: 1px dashed var(--border); }
   .logo {
     width: 32px; height: 32px; border-radius: 6px; background: #fff;
+    border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
     overflow: hidden; flex: none;
   }
@@ -108,7 +111,7 @@
   .stat {
     font-variant-numeric: tabular-nums; font-weight: 600; font-size: 11.5px;
     padding: 2px 7px; border-radius: 6px;
-    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    background: rgba(20,30,50,0.04); border: 1px solid var(--border);
     color: var(--text);
     display: inline-flex; align-items: center; gap: 4px;
   }
@@ -154,13 +157,13 @@
   }
   .pbar {
     position: relative; height: 8px; border-radius: 4px;
-    background: linear-gradient(90deg, #6b1a1a 0%, #6b5a1a 50%, #1a5a3b 100%);
+    background: linear-gradient(90deg, #e57373 0%, #e6c34d 50%, #4fa97a 100%);
     overflow: visible;
   }
   .pbar-fill {
     position: absolute; top: -3px; width: 4px; height: 14px;
-    background: #fff; border-radius: 2px;
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
+    background: #18202e; border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.7);
   }
   .vs-block {
     display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px;
@@ -181,7 +184,7 @@
   }
   .winbar > div {
     display: flex; align-items: center; padding: 0 8px;
-    white-space: nowrap; min-width: 44px; color: var(--text);
+    white-space: nowrap; min-width: 44px; color: #fff;
   }
   .winbar-away { background: linear-gradient(90deg, #3d5680, #2a3f6e); }
   .winbar-home { background: linear-gradient(90deg, #2a3f6e, #4f6bb0); justify-content: flex-end; }
